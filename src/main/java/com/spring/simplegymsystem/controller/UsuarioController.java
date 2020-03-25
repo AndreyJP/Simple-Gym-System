@@ -21,8 +21,8 @@ public class UsuarioController{
 
     @RequestMapping(value = "/usuarios", method = RequestMethod.GET)
     public ModelAndView getUsuarios(){
-        final ModelAndView mv = new ModelAndView();
-        mv.setViewName("usuarios");
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("html/usuarios");
         final List<Usuario> usuarios = usuarioService.findAll();
         mv.addObject("usuarios", usuarios);
 
