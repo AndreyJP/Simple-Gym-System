@@ -1,35 +1,53 @@
 package com.spring.simplegymsystem.model;
 
-/*import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;*/
+import java.io.Serializable;
 
-//@Entity
-//@Table(name = "aluno")
-public class Aluno {
-   /* @OneToOne
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+
+@Entity
+@Table(name = "aluno")
+public class Aluno implements Serializable{
+    
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @OneToOne
+    @Id
+    @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
-    private String matricula;
+    
+    // @NotBlank
+    // @Column(unique=true)
+    // private String matricula;
+
+    @NotBlank
     private String rua;
+
+    @NotBlank
     private String bairro;
+
+    @NotBlank
     private String cidade;
+
+    @NotBlank
     private String estado;
 
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
+    @ManyToOne
+    @JoinColumn(name = "plano_fk")
+    private PlanoPagamento planoPagamento;
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getMatricula() {
-        return this.matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
+    @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
+    private Matricula matricula;
 
     public String getRua() {
         return this.rua;
@@ -62,5 +80,4 @@ public class Aluno {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-*/
 }
