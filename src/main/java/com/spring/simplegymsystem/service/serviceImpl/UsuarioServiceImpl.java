@@ -21,14 +21,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario findById(long id) {
+    public Usuario findById(Long id) {
         return usuarioRepository.findById(id).get();
     }
 
     @Override
-    public void save(Usuario usuario) {
-        usuarioRepository.save(usuario);
+    public Usuario save(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
 
+    @Override
+    public void deleteById(Long id) {
+        usuarioRepository.deleteById(id);
     }
 
 }

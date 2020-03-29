@@ -7,7 +7,8 @@ import com.spring.simplegymsystem.model.Usuario;
 public interface UsuarioService {
 
     List<Usuario> findAll();
-    Usuario findById(long id);
-    void save(Usuario usuario);
+    Usuario findById(Long id);
+    Usuario save(Usuario usuario);
+    void deleteById(Long id);
 
 }

@@ -7,25 +7,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "matricula")
-public class Matricula {
-    
+@Table(name = "ferias")
+public class Ferias {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     @NotNull
-    private LocalDate data;
+    private LocalDate dataInicio;
 
-    @OneToOne
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    @NotNull
+    private LocalDate dataFim;
+
+    @NotNull
+    private int duracao;
+
+    @ManyToOne
     @JoinColumn(name = "aluno_fk")
     private Aluno aluno;
 
@@ -37,12 +44,28 @@ public class Matricula {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return this.data;
+    public LocalDate getDataInicio() {
+        return this.dataInicio;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public LocalDate getDataFim() {
+        return this.dataFim;
+    }
+
+    public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public int getDuracao() {
+        return this.duracao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
     }
 
 }

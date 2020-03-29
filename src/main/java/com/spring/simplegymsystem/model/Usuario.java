@@ -5,12 +5,13 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,51 +23,50 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank
+    @NotNull
     private String tipo;
 
-    @NotBlank
+    @NotNull
     @Column(unique=true)
     private String cpf;
 
-    @NotBlank
+    @NotNull
     @Column(unique=true)
     private String identidade;
 
-    @NotBlank
+    @NotNull
     private String telefone;
 
     private String celular;
 
-    @NotBlank
+    @NotNull
     @Column(unique=true)
     private String email;
 
-    @NotBlank
+    @NotNull
     private String nome;
 
-    @NotBlank
+    @NotNull
     @Column(unique=true)
     private String login;
 
-    @NotBlank
+    @NotNull
     private String senha;
 
-    //@NotBlank
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     private LocalDate ultimoLogin;
 
-    //@NotBlank
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    @NotNull
     private LocalDate dataCriacao;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Aluno aluno;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Instrutor instrutor;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Fisioterapeuta fisioterapeuta;
 
     public Long getId() {

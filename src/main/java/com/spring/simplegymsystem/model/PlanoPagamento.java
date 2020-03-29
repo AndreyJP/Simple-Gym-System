@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "plano_pagamento")
@@ -15,13 +15,13 @@ public class PlanoPagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotNull
     private String indentificacao;
 
-    @NotBlank
+    @NotNull
     private String tipo;
 
-    @NotBlank
+    @NotNull
     private int quantidadeParcelas;
 
     public Long getId() {

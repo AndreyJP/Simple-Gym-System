@@ -1,6 +1,6 @@
 package com.spring.simplegymsystem.controller;
 
-import com.spring.simplegymsystem.service.UsuarioService;
+import com.spring.simplegymsystem.service.AlunoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
-public class UsuarioController{
+public class AlunoController{
     
     @Autowired
-    UsuarioService usuarioService;
+    AlunoService alunoService;
 
-    @RequestMapping(value = "/usuarios", method = RequestMethod.GET)
+    @RequestMapping(value = "/usuario/aluno/cadastrar", method = RequestMethod.GET)
     public ModelAndView getUsuarios(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("html/usuarios");
-        
+        mv.setViewName("html/cadastrar-aluno");
+
         return mv;
     }
 }

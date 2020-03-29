@@ -7,16 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "matricula")
-public class Matricula {
-    
+@Table(name = "registro_frequencia")
+public class RegistroFrequencia {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,9 +25,16 @@ public class Matricula {
     @NotNull
     private LocalDate data;
 
-    @OneToOne
-    @JoinColumn(name = "aluno_fk")
-    private Aluno aluno;
+    @NotNull
+    private boolean presente;
+
+    @ManyToOne
+    @JoinColumn(name = "matricula_fk")
+    private Matricula matricula;
+
+    @ManyToOne
+    @JoinColumn(name = "dia_semana_fk")
+    private DiaSemana diaSemana;
 
     public Long getId() {
         return this.id;
@@ -43,6 +50,14 @@ public class Matricula {
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public boolean isPresente() {
+        return this.presente;
+    }
+
+    public void setPresente(boolean presente) {
+        this.presente = presente;
     }
 
 }

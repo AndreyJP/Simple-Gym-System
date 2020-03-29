@@ -7,27 +7,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "matricula")
-public class Matricula {
-    
+@Table(name = "avaliacao_fisica")
+public class AvaliacaoFisica {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     @NotNull
-    private LocalDate data;
+    private LocalDate dataAvaliacao;
 
-    @OneToOne
+    @NotNull
+    private String parecer;
+
+    @ManyToOne
     @JoinColumn(name = "aluno_fk")
     private Aluno aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "fisioterapeuta_fk")
+    private Fisioterapeuta fisioterapeuta;
 
     public Long getId() {
         return this.id;
@@ -37,12 +44,20 @@ public class Matricula {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return this.data;
+    public LocalDate getDataAvaliacao() {
+        return this.dataAvaliacao;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataAvaliacao(LocalDate dataAvaliacao) {
+        this.dataAvaliacao = dataAvaliacao;
+    }
+
+    public String getParecer() {
+        return this.parecer;
+    }
+
+    public void setParecer(String parecer) {
+        this.parecer = parecer;
     }
 
 }

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Static Navigation - SB Admin</title>
+        <title>Symple Gym System - Página Inicial</title>
         <link href="/css/styles-template.css" rel="stylesheet" />
         <link href="/css/index.css" rel="stylesheet" />
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <link href="/css/styles-template.css" rel="stylesheet" />
+        <script src="/js/font-awesome.min.js"></script>
     </head>
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -25,22 +25,21 @@
                     <img src="/images/login-aluno.png" class="card-img-top" alt="login-aluno" style="width: 20%; margin: 0 auto;">
                     <div class="card-body">
                       <h2 class="card-title">Sou um aluno</h2>
-                      <a href="#" class="btn btn-primary btn-lg">Login Aluno</a>
+                      <a th:href="@{/usuarios}" class="btn btn-primary btn-lg">Login Aluno</a>
                     </div>
                   </div>
                 <div class="card text-white bg-dark mb-4" style="margin: 1%;">
                     <img src="/images/login-funcionario.png" class="card-img-top" alt="login-funcionario" style="width: 20%; margin: 0 auto;">
                     <div class="card-body">
                       <h2 class="card-title">Sou um funcionário</h2>
-                      <a href="#" class="btn btn-primary btn-lg">Login Funcionário</a>
+                      <a th:href="@{/funcionario/login}" class="btn btn-primary btn-lg">Login Funcionário</a>
                     </div>
                 </div>     
             </div>
         </div>
-        
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+   
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/scripts-template.js"></script>
     </body>
 </html>

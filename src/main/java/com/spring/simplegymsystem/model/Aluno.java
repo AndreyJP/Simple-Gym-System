@@ -1,45 +1,38 @@
 package com.spring.simplegymsystem.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 
 @Entity
 @Table(name = "aluno")
-public class Aluno implements Serializable{
+public class Aluno {
     
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-
-    @OneToOne
     @Id
+    private Long id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
     
-    // @NotBlank
-    // @Column(unique=true)
-    // private String matricula;
-
-    @NotBlank
+    @NotNull
     private String rua;
 
-    @NotBlank
+    @NotNull
     private String bairro;
 
-    @NotBlank
+    @NotNull
     private String cidade;
 
-    @NotBlank
+    @NotNull
     private String estado;
 
     @ManyToOne
