@@ -20,12 +20,20 @@ public class Instrutor{
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
-    
+  
     @NotNull
     private String tipoAula;
 
     @NotNull
     private String formacao;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTipoAula() {
         return this.tipoAula;
@@ -41,6 +49,14 @@ public class Instrutor{
 
     public void setFormacao(String formacao) {
         this.formacao = formacao;
+    }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

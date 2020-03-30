@@ -20,9 +20,17 @@ public class Fisioterapeuta{
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
-    
+  
     @NotNull
     private String registro;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRegistro() {
         return this.registro;
@@ -30,6 +38,14 @@ public class Fisioterapeuta{
 
     public void setRegistro(String registro) {
         this.registro = registro;
+    }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

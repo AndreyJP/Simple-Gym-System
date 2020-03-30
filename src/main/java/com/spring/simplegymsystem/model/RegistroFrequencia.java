@@ -36,6 +36,22 @@ public class RegistroFrequencia {
     @JoinColumn(name = "dia_semana_fk")
     private DiaSemana diaSemana;
 
+    public DiaSemana getDiaSemana() {
+        return this.diaSemana;
+    }
+
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+    
+    public Matricula getMatricula() {
+        return this.matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
+
     public Long getId() {
         return this.id;
     }

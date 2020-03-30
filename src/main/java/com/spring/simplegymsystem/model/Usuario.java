@@ -69,6 +69,30 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Fisioterapeuta fisioterapeuta;
 
+    public Fisioterapeuta getFisioterapeuta() {
+        return this.fisioterapeuta;
+    }
+
+    public void setFisioterapeuta(Fisioterapeuta fisioterapeuta) {
+        this.fisioterapeuta = fisioterapeuta;
+    }
+    
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Instrutor getInstrutor() {
+        return this.instrutor;
+    }
+
+    public void setInstrutor(Instrutor instrutor) {
+        this.instrutor = instrutor;
+    }
+
     public Long getId() {
         return this.id;
     }

@@ -24,6 +24,22 @@ public class OcorrenciaAula {
     @JoinColumn(name = "aula_grupo_fk")
     private AulaGrupo aulaGrupo;
 
+    public AulaGrupo getAulaGrupo() {
+        return this.aulaGrupo;
+    }
+
+    public void setAulaGrupo(AulaGrupo aulaGrupo) {
+        this.aulaGrupo = aulaGrupo;
+    }
+
+    public DiaSemana getDiaSemana() {
+        return this.diaSemana;
+    }
+
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
     public Long getId() {
         return this.id;
     }

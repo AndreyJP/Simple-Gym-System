@@ -39,6 +39,14 @@ public class AulaGrupo {
     @JoinColumn(name = "instrutor_fk")
     private Instrutor instrutor;
 
+    public Instrutor getInstrutor() {
+        return this.instrutor;
+    }
+
+    public void setInstrutor(Instrutor instrutor) {
+        this.instrutor = instrutor;
+    }
+
     public Long getId() {
         return this.id;
     }

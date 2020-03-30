@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Symple Gym System - Cadastrar Instrutor</title>
+        <link href="/css/styles-template.css" rel="stylesheet" />
+        <script src="/js/font-awesome.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="html/navbar :: navbar"></div>
+        <div id="layoutSidenav">
+            <div th:replace="html/sidebar :: sidebar"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Cadastrar Novo Instrutor</h1>
+                        <br/>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label class="small mb-1" for="nome">Nome</label>
+                                        <input class="form-control py-4" id="nome" name="nome" type="text" placeholder="Nome completo" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="cpf">CPF</label>
+                                        <input class="form-control py-4" id="cpf" name="cpf" type="text" placeholder="CPF" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="identidade">Identidade</label>
+                                        <input class="form-control py-4" id="identidade" name="identidade" type="text" placeholder="Identidade" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label class="small mb-1" for="email">Email</label>
+                                        <input class="form-control py-4" id="email" name="email" type="email" placeholder="email@exemplo.com" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="telefone">Telefone</label>
+                                        <input class="form-control py-4" id="telefone" name="telefone" type="text" placeholder="(XX) XXXX-XXXX" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="celular">Celular</label>
+                                        <input class="form-control py-4" id="celular" name="celular" type="text" placeholder="(XX) X XXXX-XXXX"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="login">Login</label>
+                                        <input class="form-control py-4" id="login" name="login" type="text" placeholder="Login do usuário" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="senha">Senha</label>
+                                        <input class="form-control py-4" id="senha" name="senha" type="password" placeholder="Insira a senha" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="connfirmarsenha">Confirmação de Senha</label>
+                                        <input class="form-control py-4" id="connfirmarsenha" name="connfirmarsenha" type="password" placeholder="Repita a senha" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="formacao">Formação</label>
+                                        <input class="form-control py-4" id="formacao" name="formacao" type="text" placeholder="Formação do instrutor" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="tipoAula">Tipo de Atividade</label>
+                                        <select class="form-control" id="tipoAula" name="tipoAula" required style="height: 50px;">
+                                            <option value="">Selecione um tipo de atividade</option>
+                                            <option value="grupo">Aula em  Grupo</option>
+                                            <option value="musculacao">Musculação</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group d-flex align-items-center mt-4 mb-0">
+                                        <button class="btn btn-dark mr-2" type="submit">Cadastrar</button>
+                                        <a class="btn btn-primary" th:href="@{/usuario/funcionario}">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+                <div th:replace="html/footer :: footer"></div>
+            </div>
+        </div>
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/scripts-template.js"></script>
+    </body>
+</html>

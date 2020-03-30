@@ -36,6 +36,22 @@ public class AvaliacaoFisica {
     @JoinColumn(name = "fisioterapeuta_fk")
     private Fisioterapeuta fisioterapeuta;
 
+    public Fisioterapeuta getFisioterapeuta() {
+        return this.fisioterapeuta;
+    }
+
+    public void setFisioterapeuta(Fisioterapeuta fisioterapeuta) {
+        this.fisioterapeuta = fisioterapeuta;
+    }
+    
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
     public Long getId() {
         return this.id;
     }

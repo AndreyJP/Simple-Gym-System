@@ -9,7 +9,6 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.persistence.CascadeType;
 
 @Entity
 @Table(name = "aluno")
@@ -22,7 +21,7 @@ public class Aluno {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
-    
+  
     @NotNull
     private String rua;
 
@@ -39,8 +38,13 @@ public class Aluno {
     @JoinColumn(name = "plano_fk")
     private PlanoPagamento planoPagamento;
 
-    @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
-    private Matricula matricula;
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRua() {
         return this.rua;
@@ -73,4 +77,21 @@ public class Aluno {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public PlanoPagamento getPlanoPagamento() {
+        return this.planoPagamento;
+    }
+
+    public void setPlanoPagamento(PlanoPagamento planoPagamento) {
+        this.planoPagamento = planoPagamento;
+    }
+
 }

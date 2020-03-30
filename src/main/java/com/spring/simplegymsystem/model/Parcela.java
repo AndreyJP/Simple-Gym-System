@@ -44,6 +44,22 @@ public class Parcela {
     @JoinColumn(name = "aluno_fk")
     Aluno aluno;
 
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public PlanoPagamento getPlanoPagamento() {
+        return this.planoPagamento;
+    }
+
+    public void setPlanoPagamento(PlanoPagamento planoPagamento) {
+        this.planoPagamento = planoPagamento;
+    }
+
     public Long getId() {
         return this.id;
     }

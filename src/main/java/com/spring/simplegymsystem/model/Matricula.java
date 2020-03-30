@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -25,7 +25,7 @@ public class Matricula {
     @NotNull
     private LocalDate data;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "aluno_fk")
     private Aluno aluno;
 
@@ -43,6 +43,14 @@ public class Matricula {
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
 }

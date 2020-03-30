@@ -36,6 +36,14 @@ public class Ferias {
     @JoinColumn(name = "aluno_fk")
     private Aluno aluno;
 
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
     public Long getId() {
         return this.id;
     }
