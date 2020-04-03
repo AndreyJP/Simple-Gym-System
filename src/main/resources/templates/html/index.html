@@ -21,20 +21,14 @@
         <br>
         <div class="container-fluid">
             <div class="row justify-content-center text-center">
-                <div class="card text-white bg-dark mb-4" style="margin: 1%;">
-                    <img src="/images/login-aluno.png" class="card-img-top" alt="login-aluno" style="width: 20%; margin: 0 auto;">
-                    <div class="card-body">
-                      <h2 class="card-title">Sou um aluno</h2>
-                      <a th:href="@{/login}" class="btn btn-primary btn-lg">Login Aluno</a>
-                    </div>
-                  </div>
-                <div class="card text-white bg-dark mb-4" style="margin: 1%;">
-                    <img src="/images/login-funcionario.png" class="card-img-top" alt="login-funcionario" style="width: 20%; margin: 0 auto;">
-                    <div class="card-body">
-                      <h2 class="card-title">Sou um funcionário</h2>
-                      <a th:href="@{/login}" class="btn btn-primary btn-lg">Login Funcionário</a>
-                    </div>
-                </div>     
+                <a th:href="@{/login}" class=" card btn bg-dark text-white mb-4" style="margin: 1%;">
+                    <img src="/images/login-aluno.png" class="card-img-top" alt="login-aluno" style="width: 20%; margin: 4% auto;">
+                    <h2 class="card-title">Sou um aluno</h2>
+                </a>
+                <a th:href="@{/login}" class=" card btn bg-dark text-white mb-4" style="margin: 1%;">
+                    <img src="/images/login-funcionario.png" class="card-img-top" alt="login-funcionario" style="width: 20%; margin: 4% auto;">
+                    <h2 class="card-title">Sou um funcionário</h2>
+                </a>
             </div>
         </div>
    

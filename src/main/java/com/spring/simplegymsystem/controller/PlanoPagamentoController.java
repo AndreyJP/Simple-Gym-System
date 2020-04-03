@@ -1,32 +1,33 @@
 package com.spring.simplegymsystem.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.spring.simplegymsystem.model.PlanoPagamento;
 import com.spring.simplegymsystem.model.Usuario;
-import com.spring.simplegymsystem.service.AlunoService;
+import com.spring.simplegymsystem.service.PlanoPagamentoService;
 import com.spring.simplegymsystem.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class AlunoController{
+public class PlanoPagamentoController{
     
     @Autowired
-    AlunoService alunoService;
+    PlanoPagamentoService planoPagamentoService;
 
     @Autowired
     UsuarioService usuarioService;
 
-    @RequestMapping(value = "/usuario/aluno", method = RequestMethod.GET)
-    public ModelAndView obterAlunos(HttpSession session){
+    @RequestMapping(value = "/plano/cadastrar", method = RequestMethod.GET)
+    public ModelAndView obterCadastroDePlano(HttpSession session){
         ModelAndView mv = new ModelAndView();
 
         Long id = (Long) session.getAttribute("idUsuario");
@@ -39,12 +40,8 @@ public class AlunoController{
         if(usuario != null){
             if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista")){
                 usuario = usuarioService.findById(id);
-                List<Usuario> usuarios = new ArrayList<>();
-                usuarios = usuarioService.findAll();
-
-                mv.addObject("usuarios", usuarios);
                 mv.addObject("usuario", usuario);
-                mv.setViewName("html/lista-alunos");
+                mv.setViewName("html/cadastrar-plano");
             }else{
                 mv.setViewName("redirect:/usuario/funcionario");
             }
@@ -55,8 +52,8 @@ public class AlunoController{
         return mv;
     }
 
-    @RequestMapping(value = "/usuario/aluno/cadastrar", method = RequestMethod.GET)
-    public ModelAndView obterCadastroAluno(HttpSession session){
+    @RequestMapping(value = "/plano/cadastrar", method = RequestMethod.POST)
+    public ModelAndView obterCadastroDePlanoPost(HttpSession session, WebRequest request){
         ModelAndView mv = new ModelAndView();
 
         Long id = (Long) session.getAttribute("idUsuario");
@@ -69,13 +66,27 @@ public class AlunoController{
         if(usuario != null){
             if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista")){
                 usuario = usuarioService.findById(id);
+                
+                PlanoPagamento planoPagamento = new PlanoPagamento();
+                Map<String, String[]> form = request.getParameterMap();
+
+                planoPagamento.setIndentificacao(form.get("identificacao")[0]);
+                planoPagamento.setTipo(form.get("tipoPlano")[0]);
+                planoPagamento.setQuantidadeParcelas(Integer.parseInt(form.get("qtdeParcelas")[0]));
+
+                System.out.println(planoPagamento.getIndentificacao());
+                System.out.println(planoPagamento.getQuantidadeParcelas());
+                System.out.println(planoPagamento.getTipo());
+
+                planoPagamentoService.save(planoPagamento);
+
                 mv.addObject("usuario", usuario);
-                mv.setViewName("html/cadastrar-aluno");
+                mv.setViewName("redirect:/plano/cadastrar");
             }else{
-                mv.setViewName("redirect:/usuario/funcionario");
+                mv.setViewName("redirect:/plano/cadastrar");
             }
         }else{
-            mv.setViewName("redirect:/usuario/funcionario");
+            mv.setViewName("redirect:/plano/cadastrar");
         }
 
         return mv;

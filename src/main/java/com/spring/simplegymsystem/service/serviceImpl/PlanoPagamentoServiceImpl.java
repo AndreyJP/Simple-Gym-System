@@ -7,7 +7,9 @@ import com.spring.simplegymsystem.repository.PlanoPagamentoRepository;
 import com.spring.simplegymsystem.service.PlanoPagamentoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PlanoPagamentoServiceImpl implements PlanoPagamentoService {
 
     @Autowired

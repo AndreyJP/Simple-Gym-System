@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Symple Gym System - Cadastrar Plano de Pagamento</title>
+        <link href="/css/styles-template.css" rel="stylesheet" />
+        <script src="/js/font-awesome.min.js"></script>
+        <script type="text/javascript">
+            function preencherCampo(){
+                var campo = document.getElementById("tipoPlano").value;
+                if(campo == "mensal"){
+                    document.getElementById("qtdeParcelas").value = 12
+                }else if(campo == "anual"){
+                    document.getElementById("qtdeParcelas").value = 1
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div th:replace="html/navbar :: navbar"></div>
+        <div id="layoutSidenav">
+            <div th:replace="html/sidebar :: sidebar"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Cadastrar Novo Plano de Pagamento</h1>
+                        <br/>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label class="small mb-1" for="identificacao">Identificação</label>
+                                        <input class="form-control py-4" id="identificacao" name="identificacao" type="text" placeholder="Identificação do Plano de Pagamento" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label class="small mb-1" for="tipoPlano">Tipo</label>
+                                        <select class="form-control" id="tipoPlano" name="tipoPlano" required style="height: 50px;" onchange="preencherCampo();">
+                                            <option value="">Selecione o Tipo do Plano</option>
+                                            <option value="mensal">Mensal</option>
+                                            <option value="anual">Anual</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="qtdeParcelas">Quantidade de Parcelas</label>
+                                        <input class="form-control py-4" id="qtdeParcelas" name="qtdeParcelas" type="text" placeholder="Quantidade de Parcelas" required readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group d-flex align-items-center mt-4 mb-0">
+                                        <button class="btn btn-dark mr-2" type="submit" onclick="preencherCampo();">Cadastrar</button>
+                                        <a class="btn btn-primary" th:href="@{/usuario/funcionario}">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+                <div th:replace="html/footer :: footer"></div>
+            </div>
+        </div>
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/scripts-template.js"></script>
+    </body>
+</html>
