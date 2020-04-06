@@ -70,11 +70,11 @@ public class PlanoPagamentoController{
                 PlanoPagamento planoPagamento = new PlanoPagamento();
                 Map<String, String[]> form = request.getParameterMap();
 
-                planoPagamento.setIndentificacao(form.get("identificacao")[0]);
+                planoPagamento.setIdentificacao(form.get("identificacao")[0]);
                 planoPagamento.setTipo(form.get("tipoPlano")[0]);
                 planoPagamento.setQuantidadeParcelas(Integer.parseInt(form.get("qtdeParcelas")[0]));
 
-                System.out.println(planoPagamento.getIndentificacao());
+                System.out.println(planoPagamento.getIdentificacao());
                 System.out.println(planoPagamento.getQuantidadeParcelas());
                 System.out.println(planoPagamento.getTipo());
 

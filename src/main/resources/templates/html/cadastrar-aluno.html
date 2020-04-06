@@ -19,25 +19,138 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Cadastrar Novo Aluno</h1>
                         <br/>
-                        <form>
+                        <form method="POST">
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group"><label class="small mb-1" for="inputFirstName">First Name</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" /></div>
+                                    <div class="form-group"><label class="small mb-1" for="nome">Nome</label>
+                                        <input class="form-control py-4" id="nome" name="nome" type="text" placeholder="Nome completo" required/>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="cpf">CPF</label>
+                                        <input class="form-control py-4" id="cpf" name="cpf" type="text" placeholder="CPF" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="identidade">Identidade</label>
+                                        <input class="form-control py-4" id="identidade" name="identidade" type="text" placeholder="Identidade" required/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" /></div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" /></div>
+                                    <div class="form-group"><label class="small mb-1" for="email">Email</label>
+                                        <input class="form-control py-4" id="email" name="email" type="email" placeholder="email@exemplo.com" required/>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label><input class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirm password" /></div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="telefone">Telefone</label>
+                                        <input class="form-control py-4" id="telefone" name="telefone" type="text" placeholder="(XX) XXXX-XXXX" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="celular">Celular</label>
+                                        <input class="form-control py-4" id="celular" name="celular" type="text" placeholder="(XX) X XXXX-XXXX"/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="login.html">Create Account</a></div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="login">Login</label>
+                                        <input class="form-control py-4" id="login" name="login" type="text" placeholder="Login do usuário" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="senha">Senha</label>
+                                        <input class="form-control py-4" id="senha" name="senha" type="password" placeholder="Insira a senha" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="connfirmarsenha">Confirmação de Senha</label>
+                                        <input class="form-control py-4" id="connfirmarsenha" name="connfirmarsenha" type="password" placeholder="Repita a senha" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="rua">Rua</label>
+                                        <input class="form-control py-4" id="rua" name="rua" type="text" placeholder="Rua da residência do aluno" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="bairro">Bairro</label>
+                                        <input class="form-control py-4" id="bairro" name="bairro" type="text" placeholder="Bairro da residência do aluno" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group"><label class="small mb-1" for="uf">Estado</label>
+                                        <select class="form-control" id="uf" name="uf" required style="height: 50px;">
+                                            <option value="">Selecione</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                            <option value="EX">Estrangeiro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="cidade">Cidade</label>
+                                        <input class="form-control py-4" id="cidade" name="cidade" type="text" placeholder="Cidade da residência do aluno" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="planopgto">Plano de Pagamento</label>
+                                        <select class="form-control" id="planopgto" name="planopgto" required style="height: 50px;" >
+                                            <option value="">Selecione um Plano de Pagamento</option>
+                                            <option th:each="plano : ${planos}" th:value="${plano.id}" th:text="${plano.identificacao}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="ultimoPagamento">Último Pagamento</label>
+                                        <input class="form-control py-4" id="ultimoPagamento" name="ultimoPagamento" type="text" placeholder="Útimo Pagamento" readonly/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="small mb-1" for="proximoPagamento">Próximo Pagamento</label>
+                                        <input class="form-control py-4" id="proximoPagamento" name="proximoPagamento" type="text" placeholder="Próximo Pagamento" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group d-flex align-items-center mt-4 mb-0">
+                                        <button class="btn btn-dark mr-2" type="submit">Cadastrar</button>
+                                        <a class="btn btn-primary" th:href="@{/usuario/funcionario}">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </main>

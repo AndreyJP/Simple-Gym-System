@@ -23,7 +23,10 @@ public class Matricula {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     @NotNull
-    private LocalDate data;
+    private LocalDate dataInicio;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    private LocalDate dataFim;
 
     @ManyToOne
     @JoinColumn(name = "aluno_fk")
@@ -37,12 +40,20 @@ public class Matricula {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return this.data;
+    public LocalDate getDataInicio() {
+        return this.dataInicio;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataInicio(LocalDate data) {
+        this.dataInicio = data;
+    }
+
+    public LocalDate getDataFim() {
+        return this.dataFim;
+    }
+
+    public void setDataFim(LocalDate data) {
+        this.dataFim = data;
     }
 
     public Aluno getAluno() {

@@ -28,20 +28,31 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Alunos cadastrados</h1>
-                        <br/>
+                        <div class="row">
+                            <div class="col-md-10 mt-4">
+                                <h1>Alunos cadastrados</h1>
+                            </div>
+                            <div class="col-md-2 mt-4">
+                                <a th:href="@{/usuario/aluno/cadastrar}">
+                                    <button type="button" class="btn btn-primary">Adicionar Novo Aluno</button>
+                                </a>
+                            </div>
+                        </div>
+                        <br>
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
                                                 <th>E-mail</th>
                                                 <th>Telefone</th>
                                                 <th>Celular</th>
+                                                <th>Cidade</th>
+                                                <th>Plano</th>
                                                 <th>Data Criação</th>
-                                                <th>Opções</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <!-- <tfoot>
@@ -55,13 +66,46 @@
                                             </tr>
                                         </tfoot> -->
                                         <tbody>
-                                            <tr th:each="aluno : ${usuarios}">
-                                                <td th:text="${aluno.nome}"></td>
-                                                <td th:text="${aluno.email}"></td>
-                                                <td th:text="${aluno.telefone}"></td>
-                                                <td th:text="${aluno.celular}"></td>
-                                                <td th:text="${#temporals.format(aluno.dataCriacao, 'dd/MM/yyyy')}"></td>
-                                                <td>Editar / Excluir</td>
+                                            <tr th:each="aluno : ${alunos}">
+                                                <td th:text="${aluno.usuario.nome}"></td>
+                                                <td th:text="${aluno.usuario.email}"></td>
+                                                <td th:text="${aluno.usuario.telefone}"></td>
+                                                <td th:text="${aluno.usuario.celular}"></td>
+                                                <td th:text="${aluno.cidade}"></td>
+                                                <td th:text="${aluno.planoPagamento.identificacao}"></td>
+                                                <td th:text="${#temporals.format(aluno.usuario.dataCriacao, 'dd/MM/yyyy')}"></td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="opcoes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                          Opções
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="opcoes">
+                                                          <a class="dropdown-item" href="#">Editar</a>
+                                                          <a class="dropdown-item" data-toggle="modal" th:attr="data-target='#modalExcluir'+${aluno.usuario.id}" href="#">Excluir</a>
+                                                          <a class="dropdown-item" href="#">Parcelas</a>
+                                                          <a class="dropdown-item" href="#">Matrículas</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" th:id="modalExcluir+${aluno.usuario.id}" tabindex="-1" role="dialog" aria-labelledby="excluirUsuario" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <h5 class="modal-title" th:text="${'Deseja realmente excluir o aluno ' + aluno.usuario.nome + '?'}"></h5>
+                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                              </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                              Esta operação não poderá ser desfeita!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a th:href="@{${'/usuario/aluno/' + aluno.usuario.id + '/deletar'}}"><button type="button" class="btn btn-success">Sim</button></a>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

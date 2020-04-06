@@ -16,7 +16,7 @@ public class PlanoPagamento {
     private Long id;
 
     @NotNull
-    private String indentificacao;
+    private String identificacao;
 
     @NotNull
     private String tipo;
@@ -32,12 +32,12 @@ public class PlanoPagamento {
         this.id = id;
     }
 
-    public String getIndentificacao() {
-        return this.indentificacao;
+    public String getIdentificacao() {
+        return this.identificacao;
     }
 
-    public void setIndentificacao(final String indentificacao) {
-        this.indentificacao = indentificacao;
+    public void setIdentificacao(final String indentificacao) {
+        this.identificacao = indentificacao;
     }
 
     public String getTipo() {
