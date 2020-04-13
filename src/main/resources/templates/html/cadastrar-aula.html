@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Symple Gym System - Cadastrar Aula</title>
+        <link href="/css/styles-template.css" rel="stylesheet" />
+        <script src="/js/font-awesome.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="html/navbar :: navbar"></div>
+        <div id="layoutSidenav">
+            <div th:replace="html/sidebar :: sidebar"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Cadastrar Nova Aula em Grupo</h1>
+                        <br/>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="form-group"><label class="small mb-1" for="nome">Nome</label>
+                                        <input class="form-control py-4" id="nome" name="nome" type="text" placeholder="Nome da Aula" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-2">
+                                    <div class="form-group"><label class="small mb-1" for="sala">Sala</label>
+                                        <input class="form-control py-4" id="sala" name="sala" type="text" placeholder="Sala de Aula" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group"><label class="small mb-1" for="hora-inicio">Hora Início</label>
+                                        <input class="form-control" id="hora-inicio" name="hora-inicio" type="time" required style="height: 50px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group"><label class="small mb-1" for="hora-fim">Hora Fim</label>
+                                        <input class="form-control" id="hora-fim" name="hora-fim" type="time" required style="height: 50px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group"><label class="small mb-1" for="instrutor">Instrutor Responsável</label>
+                                        <select class="form-control" id="instrutor" name="instrutor" required style="height: 50px;" >
+                                            <option value="">Selecione um Instrutor</option>
+                                            <option th:each="instrutor : ${instrutores}" th:value="${instrutor.usuario.id}" th:text="${instrutor.usuario.nome}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 small mb-1">Dias de Ocorrência</div>
+                                        <div class="col-sm-6">
+                                            <div class="form-check" th:each="diaSemana : ${diasSemana}">
+                                                <input class="form-check-input" type="checkbox" th:id="${diaSemana.nome}" th:value="${diaSemana.id}" name="diaSemana">
+                                                <label class="form-check-label" th:for="${diaSemana.nome}" th:text="${diaSemana.nome}">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group d-flex align-items-center mt-4 mb-0">
+                                        <button class="btn btn-dark mr-2" type="submit">Cadastrar</button>
+                                        <a class="btn btn-primary" th:href="@{/aula-grupo}">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+                <div th:replace="html/footer :: footer"></div>
+            </div>
+        </div>
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/scripts-template.js"></script>
+    </body>
+</html>

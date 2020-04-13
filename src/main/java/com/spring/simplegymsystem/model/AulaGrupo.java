@@ -1,6 +1,6 @@
 package com.spring.simplegymsystem.model;
 
-import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +27,13 @@ public class AulaGrupo {
     @NotNull
     private String sala;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
     @NotNull
-    private LocalDate horaInicio;
+    private LocalTime horaInicio;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
     @NotNull
-    private LocalDate horaFim;
+    private LocalTime horaFim;
 
     @ManyToOne
     @JoinColumn(name = "instrutor_fk")
@@ -71,19 +71,19 @@ public class AulaGrupo {
         this.sala = sala;
     }
 
-    public LocalDate getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return this.horaInicio;
     }
 
-    public void setHoraInicio(LocalDate horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public LocalDate getHoraFim() {
+    public LocalTime getHoraFim() {
         return this.horaFim;
     }
 
-    public void setHoraFim(LocalDate horaFim) {
+    public void setHoraFim(LocalTime horaFim) {
         this.horaFim = horaFim;
     }
     

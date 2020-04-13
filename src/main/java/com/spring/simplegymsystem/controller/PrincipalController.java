@@ -6,7 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.spring.simplegymsystem.model.DiaSemana;
 import com.spring.simplegymsystem.model.Usuario;
+import com.spring.simplegymsystem.service.DiaSemanaService;
 import com.spring.simplegymsystem.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class PrincipalController{
 
     @Autowired
     UsuarioService usuarioService;
+
+    @Autowired
+    DiaSemanaService diaSemanaService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getPaginaInicial(HttpSession session){
@@ -56,6 +61,38 @@ public class PrincipalController{
         if(teste == false){
             Usuario usuarioSalvo = usuarioService.save(usuario);
             System.out.println(usuarioSalvo.getLogin());
+        }
+
+        List<DiaSemana> diasSemana = diaSemanaService.findAll();
+
+        if(diasSemana.isEmpty()){
+            System.out.println("DIAS DA SEMANA ESTÁ VAZIO");
+            DiaSemana diaSemana1 = new DiaSemana();
+            diaSemana1.setNome("Segunda-feira");
+            DiaSemana diaSemana2 = new DiaSemana();
+            diaSemana2.setNome("Terça-feira");
+            DiaSemana diaSemana3 = new DiaSemana();
+            diaSemana3.setNome("Quarta-feira");
+            DiaSemana diaSemana4 = new DiaSemana();
+            diaSemana4.setNome("Quinta-feira");
+            DiaSemana diaSemana5 = new DiaSemana();
+            diaSemana5.setNome("Sexta-feira");
+            DiaSemana diaSemana6 = new DiaSemana();
+            diaSemana6.setNome("Sábado");
+            DiaSemana diaSemana7 = new DiaSemana();
+            diaSemana7.setNome("Domingo");
+            diasSemana.add(diaSemana1);
+            diasSemana.add(diaSemana2);
+            diasSemana.add(diaSemana3);
+            diasSemana.add(diaSemana4);
+            diasSemana.add(diaSemana5);
+            diasSemana.add(diaSemana6);
+            diasSemana.add(diaSemana7);
+        }
+
+        for(DiaSemana dia : diasSemana){
+            System.out.println(dia.getNome());
+            diaSemanaService.save(dia);
         }
 
         return mv;
@@ -116,6 +153,13 @@ public class PrincipalController{
                     usuario.setUltimoLogin(LocalDate.now());
                     usuarioService.save(usuario);
                     mv.setViewName("redirect:/usuario/funcionario");
+                break;
+                case "aluno":
+                    System.out.println("ALUNO");
+                    session.setAttribute("idUsuario", usuario.getId());
+                    usuario.setUltimoLogin(LocalDate.now());
+                    usuarioService.save(usuario);
+                    mv.setViewName("redirect:/usuario/aluno/home");
                 break;
             }
         }else{

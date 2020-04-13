@@ -47,7 +47,7 @@ public class AlunoController{
         }
         
         if(usuario != null){
-            if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista")){
+            if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista") || usuario.getTipo().equals("instrutor") || usuario.getTipo().equals("fisioterapeuta")){
                 usuario = usuarioService.findById(id);
                 List<Aluno> alunos = new ArrayList<>();
                 alunos = alunoService.findAll();
@@ -182,6 +182,33 @@ public class AlunoController{
             }
         }else{
             mv.setViewName("redirect:/usuario/funcionario");
+        }
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/usuario/aluno/home", method = RequestMethod.GET)
+    public ModelAndView acessarHomeAluno(HttpSession session){
+        ModelAndView mv = new ModelAndView();
+
+        Long id = (Long) session.getAttribute("idUsuario");
+        Usuario usuario = null;
+
+        if(id != null){
+            usuario = usuarioService.findById(id);
+        }
+        
+        if(usuario != null){
+            if(usuario.getTipo().equals("aluno")){
+                usuario = usuarioService.findById(id);
+
+                mv.addObject("usuario", usuario);
+                mv.setViewName("html/home-aluno");
+            }else{
+                mv.setViewName("redirect:/login");
+            }
+        }else{
+            mv.setViewName("redirect:/login");
         }
 
         return mv;

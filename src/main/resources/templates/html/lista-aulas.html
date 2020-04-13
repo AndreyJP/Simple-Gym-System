@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Symple Gym System - Alunos</title>
+        <title>Symple Gym System - Aulas em Grupo</title>
         <link href="/css/styles-template.css" rel="stylesheet"/>
         <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="/js/font-awesome.min.js"></script>
@@ -20,11 +20,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-10 mt-4">
-                                <h1>Alunos cadastrados</h1>
+                                <h1>Aulas em Grupo</h1>
                             </div>
                             <div class="col-md-2 mt-4">
-                                <a th:if="${usuario.tipo == 'administrador' or usuario.tipo == 'recepcionista'}" th:href="@{/usuario/aluno/cadastrar}">
-                                    <button type="button" class="btn btn-primary" >Adicionar Novo Aluno</button>
+                                <a th:href="@{/aula-grupo/cadastrar}">
+                                    <button type="button" class="btn btn-primary">Adicionar Nova Aula</button>
                                 </a>
                             </div>
                         </div>
@@ -36,52 +36,52 @@
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
-                                                <th>E-mail</th>
-                                                <th>Telefone</th>
-                                                <th>Celular</th>
-                                                <th>Cidade</th>
-                                                <th>Plano</th>
-                                                <th>Data Criação</th>
+                                                <th>Sala</th>
+                                                <th>Horário Inicial</th>
+                                                <th>Horário Final</th>
+                                                <th>Instrutor</th>
+                                                <th>Dias</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <!-- <tfoot>
+                                        <!-- <tbody>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
+                                                <td>Teste</td>
                                             </tr>
-                                        </tfoot> -->
+                                        </tbody> -->
                                         <tbody>
-                                            <tr th:each="aluno : ${alunos}">
-                                                <td th:text="${aluno.usuario.nome}"></td>
-                                                <td th:text="${aluno.usuario.email}"></td>
-                                                <td th:text="${aluno.usuario.telefone}"></td>
-                                                <td th:text="${aluno.usuario.celular}"></td>
-                                                <td th:text="${aluno.cidade}"></td>
-                                                <td th:text="${aluno.planoPagamento.identificacao}"></td>
-                                                <td th:text="${#temporals.format(aluno.usuario.dataCriacao, 'dd/MM/yyyy')}"></td>
+                                            <tr th:each="aula : ${aulas}">
+                                                <td th:text="${aula.nome}"></td>
+                                                <td th:text="${aula.sala}"></td>
+                                                <td th:text="${aula.horaInicio}"></td>
+                                                <td th:text="${aula.horaFim}"></td>
+                                                <td th:text="${aula.instrutor.usuario.nome}"></td>
+                                                <td>
+                                                    <div th:each="ocorrencia : ${ocorrencias}">
+                                                        <span th:if="${ocorrencia.aulaGrupo.id == aula.id}" th:text="${ocorrencia.diaSemana.nome}"></span>
+                                                    </div>
+                                                </td>
                                                 <td class="text-center">
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="opcoes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                           Opções
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="opcoes">
-                                                          <a class="dropdown-item" th:if="${usuario.tipo == 'administrador' or usuario.tipo == 'recepcionista'}" href="#">Editar</a>
-                                                          <a class="dropdown-item" data-toggle="modal" th:attr="data-target='#modalExcluir'+${aluno.usuario.id}" th:if="${usuario.tipo == 'administrador' or usuario.tipo == 'recepcionista'}" href="#">Excluir</a>
-                                                          <a class="dropdown-item" th:if="${usuario.tipo == 'administrador' or usuario.tipo == 'recepcionista'}" href="#">Parcelas</a>
-                                                          <a class="dropdown-item" href="#">Matrículas</a>
-                                                          <a class="dropdown-item" href="#">Avaliação Física</a>
+                                                          <a class="dropdown-item" href="#">Editar</a>
+                                                          <a class="dropdown-item" data-toggle="modal" th:attr="data-target='#modalExcluir'+${aula.id}" href="#">Excluir</a>
                                                         </div>
                                                     </div>
-                                                    <div class="modal fade" th:id="modalExcluir+${aluno.usuario.id}" tabindex="-1" role="dialog" aria-labelledby="excluirUsuario" aria-hidden="true">
+                                                    <div class="modal fade" th:id="modalExcluir+${aula.id}" tabindex="-1" role="dialog" aria-labelledby="excluirAula" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                           <div class="modal-content">
                                                             <div class="modal-header">
-                                                              <h5 class="modal-title" th:text="${'Deseja realmente excluir o aluno ' + aluno.usuario.nome + '?'}"></h5>
+                                                              <h5 class="modal-title" th:text="${'Deseja realmente excluir a aula ' + aula.nome + '?'}"></h5>
                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                               </button>
@@ -90,7 +90,7 @@
                                                               Esta operação não poderá ser desfeita!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a th:href="@{${'/usuario/aluno/' + aluno.usuario.id + '/deletar'}}"><button type="button" class="btn btn-success">Sim</button></a>
+                                                                <a th:href="@{${'/aula-grupo/' + aula.id + '/deletar'}}"><button type="button" class="btn btn-success">Sim</button></a>
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
                                                             </div>
                                                           </div>
