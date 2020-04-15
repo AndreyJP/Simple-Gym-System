@@ -121,7 +121,7 @@ describe('Caso de Uso Manter Cadastro de Aluno', () =>{
     })
 })
 
-describe.only('Manter cadastro de instrutores', () => {
+describe('Manter cadastro de instrutores', () => {
 
     before(()=> {
         cy.visit(url)

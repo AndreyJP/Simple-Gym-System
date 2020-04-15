@@ -18,6 +18,57 @@
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Página Inicial</h1>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Aula</th>
+                                        <th>Número de Alunos</th>
+                                        <th>Situação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Musculação I</td>
+                                        <td>15</td>
+                                        <td>Encerrada</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Musculação II</td>
+                                        <td>20</td>
+                                        <td>Em andamento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pilates</td>
+                                        <td>12</td>
+                                        <td>Em andamento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Funcional I</td>
+                                        <td>10</td>
+                                        <td>Encerrada</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Novas Matrículas</div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+                                    <div class="card-footer small text-muted"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i>Distribuição dos alunos nas aulas</div>
+                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                                    <div class="card-footer small text-muted"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </main>
                 <div th:replace="html/footer :: footer"></div>
@@ -26,5 +77,7 @@
         <script src="/js/jquery-3.4.1.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/scripts-template.js"></script>
+        <script src="/js/chart.min.js"></script>
+        <script src="/js/graficos.js"></script>
     </body>
 </html>
