@@ -227,7 +227,7 @@ public class UsuarioController{
                 instrutorService.save(instrutor);
                 
                 mv.addObject("usuario", usuario);
-                mv.setViewName("redirect:/usuario/cadastrar");
+                mv.setViewName("redirect:/usuario/instrutor");
             }else{
                 mv.setViewName("redirect:/usuario/funcionario");
             }

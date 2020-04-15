@@ -56,7 +56,7 @@ public class AulaGrupoController {
         }
         
         if(usuario != null){
-            if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista")){
+            if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista") || usuario.getTipo().equals("instrutor")){
 
                 List<OcorrenciaAula> ocorrenciaAulas = ocorrenciaAulaService.findAll();
                 List<AulaGrupo> aulasGrupo = aulaGrupoService.findAll();
