@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Symple Gym System - Alunos</title>
+        <link href="/css/styles-template.css" rel="stylesheet"/>
+        <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="/js/font-awesome.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="html/navbar :: navbar"></div>
+        <div id="layoutSidenav">
+            <div th:replace="html/sidebar :: sidebar"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-10 mt-4">
+                                <h1>Alunos Matriculados</h1>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Telefone</th>
+                                                <th>Celular</th>
+                                                <th>Cidade</th>
+                                                <th>Aula</th>
+                                                <th>Data Matrícula</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Andrey Pereira</td>
+                                                <td>(35) 3472-9999</td>
+                                                <td>(35) 9 9999-9999</td>
+                                                <td>Cachoeira de Minas</td>
+                                                <td>Musculação 1</td>
+                                                <td>10/02/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aluno 2</td>
+                                                <td>(35) 3472-8888</td>
+                                                <td>(35) 9 8999-9999</td>
+                                                <td>Cachoeira de Minas</td>
+                                                <td>Pilates</td>
+                                                <td>15/02/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aluno 3</td>
+                                                <td>(35) 3472-9999</td>
+                                                <td>(35) 9 9999-9999</td>
+                                                <td>Cachoeira de Minas</td>
+                                                <td>Musculação 2</td>
+                                                <td>10/02/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aluno 4</td>
+                                                <td>(35) 3472-9999</td>
+                                                <td>(35) 9 9999-9999</td>
+                                                <td>Cachoeira de Minas</td>
+                                                <td>Musculação 3</td>
+                                                <td>10/02/2020</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <div th:replace="html/footer :: footer"></div>
+            </div>
+        </div>
+        <script src="/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/scripts-template.js"></script>
+        <script src="/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#dataTable').DataTable();
+            });
+        </script>
+    </body>
+</html>

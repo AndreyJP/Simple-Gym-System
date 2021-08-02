@@ -269,4 +269,30 @@ public class UsuarioController{
 
         return mv;
     }
+
+    @RequestMapping(value = "/usuario/matriculados", method = RequestMethod.GET)
+    public ModelAndView obterAlunosMatriculados(HttpSession session){
+        ModelAndView mv = new ModelAndView("");
+
+        Long id = (Long) session.getAttribute("idUsuario");
+        Usuario usuario = null;
+
+        if(id != null){
+            usuario = usuarioService.findById(id);
+        }
+        
+        if(usuario != null){
+            if(usuario.getTipo().equals("administrador") || usuario.getTipo().equals("recepcionista") || usuario.getTipo().equals("instrutor")){
+                usuario = usuarioService.findById(id);
+                mv.addObject("usuario", usuario);
+                mv.setViewName("html/alunos-matriculados");
+            }else{
+                mv.setViewName("redirect:/usuario/funcionario");
+            }
+        }else{
+            mv.setViewName("redirect:/usuario/funcionario");
+        }
+
+        return mv;
+    }
 }
